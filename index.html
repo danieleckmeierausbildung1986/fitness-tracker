@@ -91,14 +91,16 @@
   .tips { font-size: 13px; color: var(--text2); background: #eef4f8; border-radius: var(--radius-sm); padding: 12px 16px; margin-bottom: 24px; }
   .tips strong { color: var(--navy); }
 
-  .provider-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .provider-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; justify-content: center; }
   .provider-card { border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; background: #fff; position: relative; display: flex; flex-direction: column; }
   .kat-section.alt .provider-card { background: var(--bg-card); }
   .provider-badge { position: absolute; top: -10px; left: 18px; background: var(--teal); color: #fff; font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 20px; }
   .provider-badge.preis { background: var(--accent); }
   .provider-badge.flex { background: var(--navy2); }
+  .anzeige-tag { position: absolute; top: 14px; right: 14px; font-size: 10px; color: var(--text3); border: 1px solid var(--border); padding: 2px 8px; border-radius: 10px; }
   .provider-name { font-size: 17px; font-weight: 700; margin-top: 8px; }
   .provider-meta { font-size: 12px; color: var(--text3); margin-top: 2px; }
+  .provider-desc { font-size: 13px; color: var(--text2); margin-top: 12px; }
   .provider-price { font-size: 22px; font-weight: 800; color: var(--navy); margin-top: 14px; }
   .provider-price span { font-size: 12px; color: var(--text3); font-weight: 500; }
   .provider-facts { list-style: none; margin-top: 12px; flex-grow: 1; }
@@ -108,6 +110,12 @@
   .provider-cta.active { background: var(--accent); color: #fff; }
   .provider-cta.active:hover { background: var(--accent2); }
   .provider-cta.pending { background: #eef1f4; color: var(--text3); cursor: default; border: 1px dashed #c7d0d9; }
+
+  /* SERVICE BLOCK */
+  .service-grid { display: flex; gap: 16px; flex-wrap: wrap; }
+  .service-card { flex: 1; min-width: 240px; border: 1px solid var(--border); border-radius: var(--radius); padding: 22px; background: var(--bg); }
+  .service-card h3 { font-size: 16px; }
+  .service-card p { font-size: 13px; color: var(--text2); margin: 8px 0 14px; }
 
   /* RATGEBER */
   .ratgeber-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
@@ -266,7 +274,7 @@
     <div class="kat-head">
       <div><span class="eyebrow">Bankkonto</span><h2>Girokonten vergleichen</h2><p>Kostenlos führbare Konten mit fairen Konditionen.</p></div>
     </div>
-    <div class="tips"><strong>Tipp:</strong> Achte auf Kontoführungsgebühren, kostenlose Abhebungen und ob eine kostenlose Kreditkarte enthalten ist.</div>
+    <div class="tips"><strong>Tipp:</strong> Achte auf Kontoführungsgebühren, kostenlose Abhebungen und ob eine kostenlose Kreditkarte enthalten ist. Bei Tagesgeld und Festgeld lohnt sich zusätzlich ein Blick auf die Zinsbindung.</div>
     <div class="provider-grid" id="grid-bankkonto"></div>
   </div>
 </section>
@@ -274,10 +282,30 @@
 <section class="kat-section alt" id="versicherungen">
   <div class="container">
     <div class="kat-head">
-      <div><span class="eyebrow">Versicherungen</span><h2>Versicherungen vergleichen</h2><p>Die wichtigsten Policen für Haushalt und Alltag.</p></div>
+      <div><span class="eyebrow">Versicherungen</span><h2>Versicherungen vergleichen</h2><p>Kfz- und Motorradversicherung im direkten Vergleich.</p></div>
     </div>
-    <div class="tips"><strong>Tipp:</strong> Eine Privathaftpflicht gehört zu den wichtigsten Versicherungen überhaupt — sie ist meist schon für wenige Euro im Monat zu haben.</div>
+    <div class="tips"><strong>Tipp:</strong> Ein Wechsel lohnt sich oft schon nach dem ersten Versicherungsjahr — achte auf die Kündigungsfrist deines aktuellen Vertrags.</div>
     <div class="provider-grid" id="grid-versicherungen"></div>
+  </div>
+</section>
+
+<section class="kat-section service-block" id="service">
+  <div class="container">
+    <div class="kat-head">
+      <div><span class="eyebrow">Service</span><h2>Vertrag kündigen oder widerrufen?</h2><p>Wir unterstützen dich beim Kündigungsschreiben oder beim fristgerechten Widerruf.</p></div>
+    </div>
+    <div class="service-grid">
+      <div class="service-card">
+        <h3>📄 Vertrag kündigen</h3>
+        <p>Erstelle in wenigen Minuten ein rechtssicheres Kündigungsschreiben für deinen bestehenden Vertrag.</p>
+        <a class="provider-cta active" style="display:inline-block" href="https://www.procheck24.de/tipgeber/resign?resignationType=CANCELLATION&crossentry=D52CEAF331A2C2E3336F259DDF95CE38" target="_blank" rel="noopener sponsored">Kündigung erstellen</a>
+      </div>
+      <div class="service-card">
+        <h3>↩️ Vertrag widerrufen</h3>
+        <p>Noch in der Widerrufsfrist? So erstellst du dein Widerrufsschreiben schnell und korrekt.</p>
+        <a class="provider-cta active" style="display:inline-block" href="https://www.procheck24.de/tipgeber/resign?resignationType=REVOCATION&crossentry=D52CEAF331A2C2E3336F259DDF95CE38" target="_blank" rel="noopener sponsored">Widerruf erstellen</a>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -324,6 +352,7 @@
         <ul>
           <li><a href="#bankkonto">Bankkonto</a></li>
           <li><a href="#versicherungen">Versicherungen</a></li>
+          <li><a href="#service">Kündigung & Widerruf</a></li>
           <li><a href="#ratgeber">Ratgeber</a></li>
         </ul>
       </div>
@@ -339,47 +368,39 @@
     </div>
     <div class="footer-bottom">
       <span>© 2026 Tarifheld — Platzhalter-Name, kann jederzeit angepasst werden.</span>
-      <span>Alle Anbieter- und Preisangaben sind Beispieldaten.</span>
+      <span>Als "Anzeige" gekennzeichnete Links sind Partnerlinks. Bei Vertragsabschluss erhalten wir ggf. eine Provision — für dich entstehen dadurch keine Mehrkosten.</span>
     </div>
   </div>
 </footer>
 
 <script>
 /*
-  Anbieter-Daten: 'link' ist bewusst leer, solange keine echten Partner-Links vorliegen.
-  Sobald ein Link feststeht, einfach hier eintragen — z.B. link: 'https://anbieter-domain.de'
-  Karten ohne Link zeigen automatisch "Link folgt in Kürze" statt eines Buttons.
+  Vergleichsrechner-Daten (ProCheck24 White-Label, cspident=D52CEAF331A2C2E3336F259DDF95CE38).
+  'link' ist leer, solange kein Rechner-Link vorliegt — die Karte zeigt dann automatisch
+  "Rechner folgt in Kürze" statt eines Buttons. Neue Kategorien einfach nach demselben
+  Muster ergänzen: doHomepageEntry.do?cspident=...&p=<Rechner-ID>
 */
 const ANBIETER = {
   strom: [
-    { name: 'GrünStrom24', badge: 'Empfehlung', preis: 'ab 27,90 €', einheit: '/Monat*', facts: ['100% Ökostrom', '12 Monate Preisgarantie', 'Monatlich kündbar'], link: '' },
-    { name: 'BasisStrom', badge: 'Preistipp', preis: 'ab 24,50 €', einheit: '/Monat*', facts: ['Günstiger Grundpreis', '24 Monate Laufzeit', 'Bonus im ersten Jahr'], link: '' },
-    { name: 'FlexPower', badge: 'Flexibel', preis: 'ab 29,90 €', einheit: '/Monat*', facts: ['Ohne Mindestlaufzeit', 'Monatlich kündbar', 'Transparente Abrechnung'], link: '' },
+    { name: 'Stromvergleich', badge: 'Vergleichsrechner', desc: 'Finde in wenigen Schritten den passenden Stromtarif für deinen Haushalt.', facts: ['Aktuelle Tarife auf einen Blick', 'Wechsel in wenigen Minuten', 'Unabhängiger Vergleich'], link: 'https://www.procheck24.de/einsurance/csp/doHomepageEntry.do?cspident=D52CEAF331A2C2E3336F259DDF95CE38&p=7' },
   ],
   gas: [
-    { name: 'WärmePlus', badge: 'Empfehlung', preis: 'ab 61,00 €', einheit: '/Monat*', facts: ['Klimaneutrales Gas', '12 Monate Preisgarantie', 'Schnelle Anmeldung'], link: '' },
-    { name: 'HeizSpar', badge: 'Preistipp', preis: 'ab 55,20 €', einheit: '/Monat*', facts: ['Günstiger Arbeitspreis', '24 Monate Laufzeit', 'Neukundenbonus'], link: '' },
-    { name: 'GasFlex', badge: 'Flexibel', preis: 'ab 63,40 €', einheit: '/Monat*', facts: ['Ohne Mindestlaufzeit', 'Monatlich kündbar', 'Persönlicher Berater'], link: '' },
+    { name: 'Gasvergleich', badge: 'Vergleichsrechner', desc: 'Heizkosten senken mit dem passenden Gastarif für deinen Verbrauch.', facts: ['Aktuelle Tarife auf einen Blick', 'Wechsel in wenigen Minuten', 'Unabhängiger Vergleich'], link: 'https://www.procheck24.de/einsurance/csp/doHomepageEntry.do?cspident=D52CEAF331A2C2E3336F259DDF95CE38&p=8' },
   ],
   telefon: [
-    { name: 'NetzKomfort', badge: 'Empfehlung', preis: 'ab 34,99 €', einheit: '/Monat*', facts: ['Bis 250 Mbit/s', 'Festnetz-Flat inklusive', 'Kostenloser Router'], link: '' },
-    { name: 'SparLeitung', badge: 'Preistipp', preis: 'ab 24,99 €', einheit: '/Monat*', facts: ['Bis 50 Mbit/s', 'Ideal für kleine Haushalte', '24 Monate Laufzeit'], link: '' },
-    { name: 'GlasfaserOne', badge: 'Flexibel', preis: 'ab 39,99 €', einheit: '/Monat*', facts: ['Bis 1.000 Mbit/s', 'Monatlich kündbar', 'TV-Option buchbar'], link: '' },
+    { name: 'DSL- & Internetvergleich', badge: 'Vergleichsrechner', desc: 'Festnetz, DSL oder Glasfaser — finde das passende Paket für dein Zuhause.', facts: ['Verfügbarkeit an deiner Adresse prüfen', 'Tarife mit und ohne TV-Option', 'Unabhängiger Vergleich'], link: 'https://www.procheck24.de/einsurance/csp/doHomepageEntry.do?cspident=D52CEAF331A2C2E3336F259DDF95CE38&p=9' },
   ],
   handy: [
-    { name: 'MobilFlex', badge: 'Empfehlung', preis: 'ab 14,99 €', einheit: '/Monat*', facts: ['10 GB im 5G-Netz', 'EU-Roaming inklusive', 'Monatlich kündbar'], link: '' },
-    { name: 'DatenHeld', badge: 'Preistipp', preis: 'ab 9,99 €', einheit: '/Monat*', facts: ['5 GB Datenvolumen', 'Allnet-Flat', '24 Monate Laufzeit'], link: '' },
-    { name: 'UnlimitedGo', badge: 'Flexibel', preis: 'ab 24,99 €', einheit: '/Monat*', facts: ['Unlimitiertes Datenvolumen', '5G inklusive', 'Ohne Vertragsbindung'], link: '' },
+    { name: 'Handytarif-Vergleich', badge: 'Vergleichsrechner', desc: 'Mobilfunktarife mit und ohne Vertrag im Überblick.', facts: ['Datenvolumen & Netzabdeckung vergleichen', 'Mit und ohne Handy buchbar', 'Unabhängiger Vergleich'], link: '' },
   ],
   bankkonto: [
-    { name: 'kontofrei', badge: 'Empfehlung', preis: '0,00 €', einheit: '/Monat', facts: ['Kostenlose Kontoführung', 'Gratis Girocard', 'Kostenlose Abhebungen EU-weit'], link: '' },
-    { name: 'DirektSparKonto', badge: 'Preistipp', preis: '0,00 €', einheit: '/Monat*', facts: ['Kostenlos bei Gehaltseingang', 'Kreditkarte optional', 'App-basiertes Banking'], link: '' },
-    { name: 'PremiumGiro', badge: 'Flexibel', preis: '4,90 €', einheit: '/Monat', facts: ['Filialen & Beratung', 'Kreditkarte inklusive', 'Dispokredit möglich'], link: '' },
+    { name: 'Girokonto-Vergleich', badge: 'Vergleichsrechner', desc: 'Kostenlos führbare Girokonten mit fairen Konditionen finden.', facts: ['Kontoführungsgebühren im Vergleich', 'Kostenlose Abhebungen prüfen', 'Unabhängiger Vergleich'], link: 'https://www.procheck24.de/einsurance/csp/doHomepageEntry.do?cspident=D52CEAF331A2C2E3336F259DDF95CE38&p=3' },
+    { name: 'Tagesgeld-Vergleich', badge: 'Raisin', desc: 'Täglich verfügbar sparen — mit attraktiver Verzinsung.', facts: ['Tägliche Verfügbarkeit', 'Einlagensicherung beachten', 'Vergleich über Raisin'], link: 'https://www.procheck24.de/einsurance/csp/doHomepageEntry.do?cspident=D52CEAF331A2C2E3336F259DDF95CE38&p=23' },
+    { name: 'Festgeld-Vergleich', badge: 'Raisin', desc: 'Fest angelegtes Geld zu einem garantierten Zinssatz.', facts: ['Feste Laufzeit wählbar', 'Planbare Zinserträge', 'Vergleich über Raisin'], link: 'https://www.procheck24.de/einsurance/csp/doHomepageEntry.do?cspident=D52CEAF331A2C2E3336F259DDF95CE38&p=22' },
   ],
   versicherungen: [
-    { name: 'SicherHaft', badge: 'Empfehlung', preis: 'ab 3,20 €', einheit: '/Monat*', facts: ['Privathaftpflicht', 'Weltweiter Schutz', 'Familientarif buchbar'], link: '' },
-    { name: 'HausratSchutz', badge: 'Preistipp', preis: 'ab 4,50 €', einheit: '/Monat*', facts: ['Hausratversicherung', 'Elementarschäden optional', 'Jährlich kündbar'], link: '' },
-    { name: 'RechtSicher', badge: 'Flexibel', preis: 'ab 12,90 €', einheit: '/Monat*', facts: ['Rechtsschutzversicherung', 'Privat- & Verkehrsrecht', 'Ohne Wartezeit'], link: '' },
+    { name: 'Kfz-Versicherung', badge: 'Vergleichsrechner', desc: 'Haftpflicht, Teilkasko oder Vollkasko — passend zu deinem Fahrzeug.', facts: ['Alle Tarifstufen im Vergleich', 'Schadenfreiheitsklasse übertragbar', 'Unabhängiger Vergleich'], link: 'https://www.procheck24.de/einsurance/csp/doHomepageEntry.do?cspident=D52CEAF331A2C2E3336F259DDF95CE38&p=4' },
+    { name: 'Motorradversicherung', badge: 'Vergleichsrechner', desc: 'Passenden Schutz für dein Motorrad finden.', facts: ['Saisonkennzeichen möglich', 'Verschiedene Deckungsstufen', 'Unabhängiger Vergleich'], link: 'https://www.procheck24.de/einsurance/csp/doHomepageEntry.do?cspident=D52CEAF331A2C2E3336F259DDF95CE38&p=12' },
   ],
 };
 
@@ -390,7 +411,7 @@ const ARTIKEL = [
 ];
 
 function badgeClass(b) {
-  if (b === 'Preistipp') return 'preis';
+  if (b === 'Preistipp' || b === 'Raisin') return 'preis';
   if (b === 'Flexibel') return 'flex';
   return '';
 }
@@ -399,16 +420,18 @@ function renderProviders() {
   Object.keys(ANBIETER).forEach(kat => {
     const grid = document.getElementById('grid-' + kat);
     if (!grid) return;
-    grid.innerHTML = ANBIETER[kat].map(a => `
+    const items = ANBIETER[kat];
+    grid.style.gridTemplateColumns = `repeat(${Math.min(items.length, 3)}, minmax(240px, 340px))`;
+    grid.innerHTML = items.map(a => `
       <div class="provider-card">
         <span class="provider-badge ${badgeClass(a.badge)}">${a.badge}</span>
+        ${a.link ? '<span class="anzeige-tag">Anzeige</span>' : ''}
         <div class="provider-name">${a.name}</div>
-        <div class="provider-meta">Beispielanbieter</div>
-        <div class="provider-price">${a.preis}<span> ${a.einheit}</span></div>
+        <div class="provider-desc">${a.desc}</div>
         <ul class="provider-facts">${a.facts.map(f => `<li>${f}</li>`).join('')}</ul>
         ${a.link
-          ? `<a class="provider-cta active" href="${a.link}" target="_blank" rel="noopener">Zum Anbieter</a>`
-          : `<span class="provider-cta pending">Link folgt in Kürze</span>`}
+          ? `<a class="provider-cta active" href="${a.link}" target="_blank" rel="noopener sponsored">Jetzt vergleichen</a>`
+          : `<span class="provider-cta pending">Rechner folgt in Kürze</span>`}
       </div>
     `).join('');
   });
