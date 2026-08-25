@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Test: financeads Rechner</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f6f8fa; margin: 0; padding: 24px; color: #1c2b3a; }
+  .container { max-width: 700px; margin: 0 auto; }
+  h1 { font-size: 22px; margin-bottom: 4px; }
+  .note { color: #5b6b7c; font-size: 13px; margin-bottom: 32px; }
+  .block { background: #fff; border: 1px solid #e3e8ee; border-radius: 14px; padding: 20px; margin-bottom: 28px; }
+  .block h2 { font-size: 16px; margin: 0 0 14px; }
+  iframe { display: block; }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>Test-Seite: financeads Rechner</h1>
+  <p class="note">Nur zum Ausprobieren, nicht Teil der Tariffuchs-Live-Seite.</p>
+
+  <div class="block">
+    <h2>Crowdinvestingrechner</h2>
+    <iframe onload="fa_iframeresize.do(this);" src="https://tools.financeads.net/crowdinvestingrechner.php?tp=dif&wf=86738&ntpl=responsive&h=1" scrolling="no" width="650" height="890" style="width: 100%; padding:0px; margin:0px; border-width:0px;" frameborder="0"></iframe>
+  </div>
+
+  <div class="block">
+    <h2>Geräteversicherungsrechner</h2>
+    <iframe onload="fa_iframeresize.do(this);" src="https://tools.financeads.net/geraeterechner.php?tp=dif&wf=86738&ntpl=responsive&h=1" scrolling="no" width="650" height="890" style="width: 100%; padding:0px; margin:0px; border-width:0px;" frameborder="0"></iframe>
+  </div>
+</div>
+<script type="text/javascript" src="//js.financeads.net/iframeResizeMe.min.js.gz"></script>
+</body>
+</html>
