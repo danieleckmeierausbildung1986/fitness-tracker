@@ -121,6 +121,16 @@
   .provider-cta.active:hover { background: var(--accent2); }
   .provider-cta.pending { background: #eef1f4; color: var(--text3); cursor: default; border: 1px dashed #c7d0d9; }
 
+  /* IFRAME-RECHNER */
+  .iframe-stack { display: flex; flex-direction: column; gap: 24px; margin-top: 24px; }
+  .iframe-card { background: #fff; border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; box-shadow: var(--shadow); }
+  .kat-section.alt .iframe-card { background: var(--bg-card); }
+  .iframe-card-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 14px; flex-wrap: wrap; }
+  .iframe-card h3 { font-size: 17px; }
+  .iframe-card .desc { font-size: 13px; color: var(--text2); margin-top: 4px; max-width: 560px; }
+  .iframe-wrap { border-radius: var(--radius-sm); overflow: hidden; border: 1px solid var(--border); background: #fafbfc; }
+  .iframe-wrap iframe { display: block; width: 100%; border: 0; }
+
   /* SERVICE BLOCK */
   .service-grid { display: flex; gap: 16px; flex-wrap: wrap; }
   .service-card { flex: 1; min-width: 240px; border: 1px solid var(--border); border-radius: var(--radius); padding: 22px; background: var(--bg); }
@@ -187,6 +197,8 @@
       <a href="#handy">Handy</a>
       <a href="#bankkonto">Bankkonto</a>
       <a href="#versicherungen">Versicherungen</a>
+      <a href="#kredite">Kredite</a>
+      <a href="#geldanlage">Geldanlage</a>
       <a href="#ratgeber">Ratgeber</a>
     </nav>
     <a href="#kategorien" class="header-cta">Jetzt vergleichen</a>
@@ -198,7 +210,7 @@
   <div class="container hero-inner">
     <span class="eyebrow">Kostenloser Vergleichsservice</span>
     <h1>Vergleichen. <span>Sparen.</span> Wechseln.</h1>
-    <p>Strom, Gas, Telefon, Handy, Bankkonto und Versicherungen im Überblick — verständlich erklärt und ohne versteckte Kosten. Finde in wenigen Minuten das passende Angebot.</p>
+    <p>Strom, Gas, Telefon, Handy, Bankkonto, Versicherungen, Kredite und Geldanlage im Überblick — verständlich erklärt und ohne versteckte Kosten. Finde in wenigen Minuten das passende Angebot.</p>
     <div class="hero-actions">
       <a href="#kategorien" class="btn btn-primary">Kategorie wählen</a>
       <a href="#ratgeber" class="btn btn-outline">Ratgeber lesen</a>
@@ -210,6 +222,8 @@
       <a class="quick-link" href="#handy"><span class="ic">📱</span>Handy</a>
       <a class="quick-link" href="#bankkonto"><span class="ic">🏦</span>Bankkonto</a>
       <a class="quick-link" href="#versicherungen"><span class="ic">🛡️</span>Versicherungen</a>
+      <a class="quick-link" href="#kredite"><span class="ic">💳</span>Kredite</a>
+      <a class="quick-link" href="#geldanlage"><span class="ic">📈</span>Geldanlage</a>
     </div>
   </div>
 </section>
@@ -236,6 +250,8 @@
     <a class="cat-card" href="#handy"><div class="ic">📱</div><h3>Handy</h3><p>Mobilfunktarife mit und ohne Vertrag.</p><span class="go">Vergleichen →</span></a>
     <a class="cat-card" href="#bankkonto"><div class="ic">🏦</div><h3>Bankkonto</h3><p>Kostenlose Girokonten im Überblick.</p><span class="go">Vergleichen →</span></a>
     <a class="cat-card" href="#versicherungen"><div class="ic">🛡️</div><h3>Versicherungen</h3><p>Wichtige Policen einfach erklärt.</p><span class="go">Vergleichen →</span></a>
+    <a class="cat-card" href="#kredite"><div class="ic">💳</div><h3>Kredite</h3><p>Ratenkredit, Baufinanzierung & Bausparen.</p><span class="go">Vergleichen →</span></a>
+    <a class="cat-card" href="#geldanlage"><div class="ic">📈</div><h3>Geldanlage</h3><p>Depot, Roboadvisor, Krypto & mehr.</p><span class="go">Vergleichen →</span></a>
   </div>
 </section>
 
@@ -285,17 +301,38 @@
       <div><span class="eyebrow">Bankkonto</span><h2>Girokonten vergleichen</h2><p>Kostenlos führbare Konten mit fairen Konditionen.</p></div>
     </div>
     <div class="tips"><strong>Tipp:</strong> Achte auf Kontoführungsgebühren, kostenlose Abhebungen und ob eine kostenlose Kreditkarte enthalten ist. Bei Tagesgeld und Festgeld lohnt sich zusätzlich ein Blick auf die Zinsbindung.</div>
-    <div class="provider-grid" id="grid-bankkonto"></div>
+    <div class="iframe-stack" id="iframes-bankkonto"></div>
   </div>
 </section>
 
 <section class="kat-section alt" id="versicherungen">
   <div class="container">
     <div class="kat-head">
-      <div><span class="eyebrow">Versicherungen</span><h2>Versicherungen vergleichen</h2><p>Kfz- und Motorradversicherung im direkten Vergleich.</p></div>
+      <div><span class="eyebrow">Versicherungen</span><h2>Versicherungen vergleichen</h2><p>Von Kfz bis Privathaftpflicht — die wichtigsten Policen im Vergleich.</p></div>
     </div>
     <div class="tips"><strong>Tipp:</strong> Ein Wechsel lohnt sich oft schon nach dem ersten Versicherungsjahr — achte auf die Kündigungsfrist deines aktuellen Vertrags.</div>
     <div class="provider-grid" id="grid-versicherungen"></div>
+    <div class="iframe-stack" id="iframes-versicherungen"></div>
+  </div>
+</section>
+
+<section class="kat-section" id="kredite">
+  <div class="container">
+    <div class="kat-head">
+      <div><span class="eyebrow">Kredite</span><h2>Kredite & Baufinanzierung vergleichen</h2><p>Ob Anschaffung, Immobilie oder Bausparen — finde die passende Finanzierung.</p></div>
+    </div>
+    <div class="tips"><strong>Tipp:</strong> Vergleiche immer den effektiven Jahreszins, nicht nur die monatliche Rate — er zeigt die tatsächlichen Gesamtkosten des Kredits.</div>
+    <div class="iframe-stack" id="iframes-kredite"></div>
+  </div>
+</section>
+
+<section class="kat-section alt" id="geldanlage">
+  <div class="container">
+    <div class="kat-head">
+      <div><span class="eyebrow">Geldanlage</span><h2>Geldanlage & Depot vergleichen</h2><p>Vom klassischen Depot bis Krypto — lege dein Geld passend zu deinen Zielen an.</p></div>
+    </div>
+    <div class="tips"><strong>Tipp:</strong> Achte besonders auf die Depotführungsgebühren und Orderkosten — bei langfristigem Sparen machen schon kleine Unterschiede viel aus.</div>
+    <div class="iframe-stack" id="iframes-geldanlage"></div>
   </div>
 </section>
 
@@ -451,6 +488,10 @@
       <h3>Links zu anderen Websites</h3>
       <p>An einigen Stellen in unserem Webauftritt verlinken wir auf andere Websites. Bitte beachten Sie, dass die hier beschriebene Datenschutzerklärung für diese anderen Websites nicht gilt. Wir bitten Sie, diese Seiten direkt zu besuchen, um Informationen über den Datenschutz, die Sicherheit, die Erfassung von Daten und die Vorschriften zur Weitergabe von Daten zu erhalten.</p>
 
+      <h3>financeAds-Vergleichsrechner</h3>
+      <p>Auf mehreren Seiten dieser Website binden wir Vergleichsrechner des Anbieters financeAds per iFrame ein (z. B. für Girokonto, Kreditkarte, Versicherungen, Kredite, Depot und Geldanlage). Beim Aufruf einer Seite mit einem solchen Rechner wird automatisch eine Verbindung zu den Servern von financeAds hergestellt, wobei u. a. Ihre IP-Adresse übertragen wird. financeAds erhält dadurch Kenntnis darüber, dass Sie diese Website besucht haben.</p>
+      <p>Die Einbindung erfolgt im Interesse eines schnellen und bequemen Vergleichs direkt auf unserer Seite. Dies stellt ein berechtigtes Interesse im Sinne von Art. 6 Abs. 1 lit. f DSGVO dar. Nähere Informationen zum Umgang mit Ihren Daten durch financeAds entnehmen Sie bitte der Datenschutzerklärung des Anbieters.</p>
+
       <h3>Google Web Fonts</h3>
       <p>Diese Seite nutzt zur Darstellung von Schriftarten sogenannte „Web Fonts", die von Google bereitgestellt werden. Beim Aufruf einer Seite lädt Ihr Browser die benötigten Schriftarten in den Browsercache, um Texte und Schriftarten korrekt anzuzeigen.</p>
       <p>Zu diesem Zweck nimmt der von Ihnen verwendete Browser Verbindung zu den Servern von Google auf. Hierdurch erlangt Google Kenntnis darüber, dass über Ihre IP-Adresse die Website des Betreibers aufgerufen wurde. Die Nutzung von Google Web Fonts erfolgt im Interesse einer einheitlichen und ansprechenden Darstellung der Online-Angebote. Dies stellt ein berechtigtes Interesse im Sinne von Art. 6 Abs. 1 lit. f DSGVO dar.</p>
@@ -506,6 +547,8 @@
         <ul>
           <li><a href="#bankkonto">Bankkonto</a></li>
           <li><a href="#versicherungen">Versicherungen</a></li>
+          <li><a href="#kredite">Kredite</a></li>
+          <li><a href="#geldanlage">Geldanlage</a></li>
           <li><a href="#service">Kündigung & Widerruf</a></li>
           <li><a href="#ratgeber">Ratgeber</a></li>
         </ul>
@@ -552,14 +595,45 @@ const ANBIETER = {
     { name: 'Prepaid Vergleich (SIM-only)', badge: 'tariffuxx', desc: 'Hier findest du alle Prepaid-Tarife.', facts: ['Ohne Vertragsbindung', 'Aufladen nach Bedarf', 'Vergleich über tariffuxx'], link: 'https://www.tariffuxx.de/handytarife/prepaid?r=1125067&subid=' },
     { name: 'Mobile Daten Tarifvergleich', badge: 'tariffuxx', desc: 'Der Vergleich für mobile Datentarife, ideal fürs Tablet oder einen Surfstick für den Laptop.', facts: ['Datentarife ohne Telefonie', 'Ideal für Tablet & Surfstick', 'Vergleich über tariffuxx'], link: 'https://www.tariffuxx.de/datentarife?r=1125067&subid=' },
   ],
-  bankkonto: [
-    { name: 'Girokonto-Vergleich', badge: 'Vergleichsrechner', desc: 'Kostenlos führbare Girokonten mit fairen Konditionen finden.', facts: ['Kontoführungsgebühren im Vergleich', 'Kostenlose Abhebungen prüfen', 'Unabhängiger Vergleich'], link: 'https://www.procheck24.de/einsurance/csp/doHomepageEntry.do?cspident=D52CEAF331A2C2E3336F259DDF95CE38&p=3' },
-    { name: 'Tagesgeld-Vergleich', badge: 'Raisin', desc: 'Täglich verfügbar sparen — mit attraktiver Verzinsung.', facts: ['Tägliche Verfügbarkeit', 'Einlagensicherung beachten', 'Vergleich über Raisin'], link: 'https://www.procheck24.de/einsurance/csp/doHomepageEntry.do?cspident=D52CEAF331A2C2E3336F259DDF95CE38&p=23' },
-    { name: 'Festgeld-Vergleich', badge: 'Raisin', desc: 'Fest angelegtes Geld zu einem garantierten Zinssatz.', facts: ['Feste Laufzeit wählbar', 'Planbare Zinserträge', 'Vergleich über Raisin'], link: 'https://www.procheck24.de/einsurance/csp/doHomepageEntry.do?cspident=D52CEAF331A2C2E3336F259DDF95CE38&p=22' },
-  ],
   versicherungen: [
     { name: 'Kfz-Versicherung', badge: 'Vergleichsrechner', desc: 'Haftpflicht, Teilkasko oder Vollkasko — passend zu deinem Fahrzeug.', facts: ['Alle Tarifstufen im Vergleich', 'Schadenfreiheitsklasse übertragbar', 'Unabhängiger Vergleich'], link: 'https://www.procheck24.de/einsurance/csp/doHomepageEntry.do?cspident=D52CEAF331A2C2E3336F259DDF95CE38&p=4' },
     { name: 'Motorradversicherung', badge: 'Vergleichsrechner', desc: 'Passenden Schutz für dein Motorrad finden.', facts: ['Saisonkennzeichen möglich', 'Verschiedene Deckungsstufen', 'Unabhängiger Vergleich'], link: 'https://www.procheck24.de/einsurance/csp/doHomepageEntry.do?cspident=D52CEAF331A2C2E3336F259DDF95CE38&p=12' },
+  ],
+};
+
+/*
+  Eingebettete financeAds-Vergleichsrechner (comparison.financeads.net, adspace=86738).
+  Mehrere Produktnamen aus der Partner-Tabelle zeigen auf denselben Rechner
+  (z.B. Autokredit/Minikredit/Ratenkredit -> loans.php) — daher hier zusammengefasst,
+  um den gleichen Rechner nicht mehrfach einzubetten.
+*/
+const IFRAME_RECHNER = {
+  bankkonto: [
+    { name: 'Girokonto-Vergleich', desc: 'Kostenlos führbare Girokonten mit fairen Konditionen — auch als Gemeinschafts-, Geschäfts- oder Studentenkonto.', src: 'https://comparison.financeads.net/currentaccounts.php?adspace=86738' },
+    { name: 'Tagesgeld-Vergleich', desc: 'Täglich verfügbar sparen — mit attraktiver Verzinsung.', src: 'https://comparison.financeads.net/savingsaccounts.php?adspace=86738' },
+    { name: 'Festgeld-Vergleich', desc: 'Fest angelegtes Geld zu einem garantierten Zinssatz.', src: 'https://comparison.financeads.net/fixedsavingsaccounts.php?adspace=86738' },
+    { name: 'Kreditkarten-Vergleich', desc: 'Die passende Kreditkarte finden — auch als Studenten-Kreditkarte.', src: 'https://comparison.financeads.net/creditcards.php?adspace=86738' },
+  ],
+  versicherungen: [
+    { name: 'Privathaftpflicht-Vergleich', desc: 'Eine der wichtigsten Versicherungen überhaupt — meist schon für wenige Euro im Monat.', src: 'https://comparison.financeads.net/liabilityinsurances.php?adspace=86738' },
+    { name: 'Rechtsschutz-Vergleich', desc: 'Rechtlichen Schutz für Beruf, Alltag und Straßenverkehr finden.', src: 'https://comparison.financeads.net/legalprotectioninsurances.php?adspace=86738' },
+    { name: 'Risikolebensversicherung-Vergleich', desc: 'Finanzielle Absicherung der Familie im Todesfall.', src: 'https://comparison.financeads.net/termlifeinsurances.php?adspace=86738' },
+    { name: 'Zahnzusatzversicherung-Vergleich', desc: 'Zusätzlichen Schutz für hochwertigen Zahnersatz.', src: 'https://comparison.financeads.net/supplementarydentalinsurances.php?adspace=86738' },
+    { name: 'Tierkrankenversicherung-Vergleich', desc: 'Tierarztkosten für Hund und Katze absichern.', src: 'https://comparison.financeads.net/pethealthinsurances.php?adspace=86738' },
+    { name: 'Auslandskrankenversicherung-Vergleich', desc: 'Abgesichert auf Reisen außerhalb Deutschlands.', src: 'https://comparison.financeads.net/travelhealthinsurances.php?adspace=86738' },
+    { name: 'Mietkaution-Vergleich', desc: 'Mietkaution absichern, ohne eine hohe Summe auf einmal zu hinterlegen.', src: 'https://comparison.financeads.net/rentaldepositinsurances.php?adspace=86738' },
+  ],
+  kredite: [
+    { name: 'Ratenkredit-Vergleich', desc: 'Ob Autokredit, Minikredit oder klassischer Ratenkredit — hier findest du passende Angebote.', src: 'https://comparison.financeads.net/loans.php?adspace=86738' },
+    { name: 'Baufinanzierung-Vergleich', desc: 'Finde die passende Finanzierung oder ein Forward-Darlehen für deine Immobilie.', src: 'https://comparison.financeads.net/mortgages.php?adspace=86738' },
+    { name: 'Bausparvertrag-Vergleich', desc: 'Günstig sparen und finanzieren mit einem Bausparvertrag.', src: 'https://comparison.financeads.net/buildingsavings.php?adspace=86738' },
+  ],
+  geldanlage: [
+    { name: 'Depot-Vergleich', desc: 'Das passende Wertpapierdepot finden — auch als Junior-Depot für Kinder.', src: 'https://comparison.financeads.net/brokerageaccounts.php?adspace=86738' },
+    { name: 'Roboadvisor-Vergleich', desc: 'Automatisierte Vermögensverwaltung im Vergleich.', src: 'https://comparison.financeads.net/roboadvisors.php?adspace=86738' },
+    { name: 'Crowdinvesting-Vergleich', desc: 'In Projekte und Unternehmen investieren.', src: 'https://comparison.financeads.net/crowdinvestings.php?adspace=86738' },
+    { name: 'Krypto-Vergleich', desc: 'Kryptowährungsbörsen und -anbieter im Vergleich.', src: 'https://comparison.financeads.net/cryptos.php?adspace=86738' },
+    { name: 'Steuersoftware-Vergleich', desc: 'Die passende Software für deine Steuererklärung finden.', src: 'https://comparison.financeads.net/taxsoftwares.php?adspace=86738' },
   ],
 };
 
@@ -596,6 +670,24 @@ function renderProviders() {
   });
 }
 
+function renderIframes() {
+  Object.keys(IFRAME_RECHNER).forEach(kat => {
+    const stack = document.getElementById('iframes-' + kat);
+    if (!stack) return;
+    stack.innerHTML = IFRAME_RECHNER[kat].map(r => `
+      <div class="iframe-card">
+        <div class="iframe-card-head">
+          <div><h3>${r.name}</h3><p class="desc">${r.desc}</p></div>
+          <span class="anzeige-tag" style="position:static;flex-shrink:0">Anzeige</span>
+        </div>
+        <div class="iframe-wrap">
+          <iframe src="${r.src}" loading="lazy" width="100%" height="1300" scrolling="yes" title="${r.name}"></iframe>
+        </div>
+      </div>
+    `).join('');
+  });
+}
+
 function renderArtikel() {
   const grid = document.getElementById('ratgeber-grid');
   grid.innerHTML = ARTIKEL.map(a => `
@@ -625,6 +717,7 @@ document.getElementById('newsletter-form').addEventListener('submit', (e) => {
 });
 
 renderProviders();
+renderIframes();
 renderArtikel();
 </script>
 </body>
