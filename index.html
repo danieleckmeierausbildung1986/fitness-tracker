@@ -92,7 +92,10 @@
   .tips strong { color: var(--navy); }
 
   /* RECHTSTEXTE */
-  .legal-content { max-width: 720px; font-size: 14px; color: var(--text2); line-height: 1.7; }
+  .legal-toggle { background: var(--accent); color: #fff; border: none; padding: 9px 20px; border-radius: 30px; font-size: 13px; font-weight: 700; cursor: pointer; white-space: nowrap; }
+  .legal-toggle:hover { background: var(--accent2); }
+  .legal-content { max-width: 720px; font-size: 14px; color: var(--text2); line-height: 1.7; display: none; margin-top: 24px; }
+  .legal-content.open { display: block; }
   .legal-content h3 { font-size: 17px; color: var(--navy); margin: 30px 0 10px; }
   .legal-content h3:first-of-type { margin-top: 0; }
   .legal-content h4 { font-size: 14px; color: var(--navy); margin: 18px 0 6px; }
@@ -382,8 +385,9 @@
   <div class="container">
     <div class="kat-head">
       <div><span class="eyebrow">Rechtliches</span><h2>Impressum</h2></div>
+      <button class="legal-toggle" id="impressum-toggle" onclick="toggleLegal('impressum')">Anzeigen</button>
     </div>
-    <div class="legal-content">
+    <div class="legal-content" id="impressum-content">
       <p><strong>Christian Arbinger</strong></p>
       <p>Landauer Weg 93<br>94431 Pilsting</p>
       <p><strong>Postanschrift für Briefpost:</strong><br>Landauer Weg 93<br>94431 Pilsting</p>
@@ -452,8 +456,9 @@
   <div class="container">
     <div class="kat-head">
       <div><span class="eyebrow">Rechtliches</span><h2>Datenschutz</h2></div>
+      <button class="legal-toggle" id="datenschutz-toggle" onclick="toggleLegal('datenschutz')">Anzeigen</button>
     </div>
-    <div class="legal-content">
+    <div class="legal-content" id="datenschutz-content">
       <p>Christian Arbinger<br>Landauer Weg 93<br>94431 Pilsting</p>
       <p>Telefon: +49 (0) 9953 980 111<br>E-Mail: <a href="mailto:tariffuchs.de@mail.de">tariffuchs.de@mail.de</a><br>Internet: <a href="https://www.tariffuchs.fun" target="_blank" rel="noopener">www.tariffuchs.fun</a></p>
 
@@ -708,6 +713,19 @@ function renderArtikel() {
       </div>
     </div>
   `).join('');
+}
+
+function toggleLegal(id) {
+  const content = document.getElementById(id + '-content');
+  const btn = document.getElementById(id + '-toggle');
+  const open = content.classList.toggle('open');
+  btn.textContent = open ? 'Verbergen' : 'Anzeigen';
+}
+
+if (location.hash === '#impressum' || location.hash === '#datenschutz') {
+  const id = location.hash.slice(1);
+  document.getElementById(id + '-content').classList.add('open');
+  document.getElementById(id + '-toggle').textContent = 'Verbergen';
 }
 
 document.getElementById('burger').addEventListener('click', () => {
