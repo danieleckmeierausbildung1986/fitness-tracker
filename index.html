@@ -794,14 +794,16 @@ function toggleRechner(id) {
 }
 
 /* COOKIE CONSENT */
-const COOKIE_CONSENT_KEY = 'tariffuchs_cookie_consent';
+/* Bewusst ohne localStorage/sessionStorage: die Auswahl gilt nur für den aktuellen
+   Seitenaufruf, bei jedem neuen Zugriff (auch Reload) erscheint der Banner erneut. */
+let cookieConsentState = null;
 
 function getCookieConsent() {
-  try { return JSON.parse(localStorage.getItem(COOKIE_CONSENT_KEY)); } catch (e) { return null; }
+  return cookieConsentState;
 }
 
 function setCookieConsent(external) {
-  try { localStorage.setItem(COOKIE_CONSENT_KEY, JSON.stringify({ essential: true, external: external, ts: Date.now() })); } catch (e) {}
+  cookieConsentState = { essential: true, external: external, ts: Date.now() };
 }
 
 function refreshCookieUI() {
