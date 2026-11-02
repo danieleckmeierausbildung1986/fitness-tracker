@@ -170,6 +170,34 @@
   .footer-grid a:hover { color: #fff; }
   .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 20px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; font-size: 12px; }
 
+  /* COOKIE-BANNER */
+  .cookie-banner { position: fixed; left: 0; right: 0; bottom: 0; z-index: 500; background: #fff; border-top: 1px solid var(--border); box-shadow: 0 -4px 20px rgba(15,42,67,0.1); padding: 20px; }
+  .cookie-banner-inner { max-width: 900px; margin: 0 auto; }
+  .cookie-banner h3 { font-size: 16px; margin-bottom: 6px; }
+  .cookie-banner p { font-size: 13px; color: var(--text2); line-height: 1.6; }
+  .cookie-banner p a { color: var(--teal); text-decoration: underline; }
+  .cookie-banner-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 14px; }
+  .cookie-banner-actions .btn { padding: 10px 20px; font-size: 13px; }
+
+  .cookie-settings-overlay { position: fixed; inset: 0; z-index: 600; background: rgba(15,42,67,0.5); display: none; align-items: center; justify-content: center; padding: 20px; }
+  .cookie-settings-box { background: #fff; border-radius: var(--radius); padding: 26px; max-width: 540px; width: 100%; max-height: 85vh; overflow-y: auto; }
+  .cookie-settings-box h3 { font-size: 19px; margin-bottom: 14px; }
+  .cookie-cat { border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 14px 16px; margin-bottom: 12px; }
+  .cookie-cat-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+  .cookie-cat-head strong { font-size: 14px; color: var(--navy); }
+  .cookie-cat-head span.always-on { font-size: 12px; color: var(--text3); }
+  .cookie-cat p { font-size: 12.5px; color: var(--text2); line-height: 1.5; }
+  .cookie-switch { position: relative; display: inline-block; width: 42px; height: 24px; flex-shrink: 0; }
+  .cookie-switch input { opacity: 0; width: 0; height: 0; }
+  .cookie-switch .slider { position: absolute; inset: 0; background: #ccd3da; border-radius: 24px; cursor: pointer; transition: 0.2s; }
+  .cookie-switch .slider::before { content: ''; position: absolute; width: 18px; height: 18px; left: 3px; top: 3px; background: #fff; border-radius: 50%; transition: 0.2s; }
+  .cookie-switch input:checked + .slider { background: var(--teal); }
+  .cookie-switch input:checked + .slider::before { transform: translateX(18px); }
+  .cookie-settings-actions { display: flex; gap: 10px; justify-content: flex-end; margin-top: 16px; }
+  .cookie-settings-actions .btn { padding: 10px 20px; font-size: 13px; }
+
+  .cookie-icon-btn { position: fixed; left: 16px; bottom: 16px; z-index: 400; width: 44px; height: 44px; border-radius: 50%; background: var(--navy); color: #fff; border: none; font-size: 20px; cursor: pointer; box-shadow: var(--shadow); display: none; align-items: center; justify-content: center; }
+
   @media (max-width: 860px) {
     nav.main-nav { position: fixed; top: 62px; left: 0; right: 0; bottom: 0; background: #fff; flex-direction: column; padding: 24px; gap: 4px; transform: translateX(100%); transition: transform 0.25s; overflow-y: auto; }
     nav.main-nav.open { transform: translateX(0); }
@@ -572,6 +600,7 @@
           <li><a href="#">Kontakt</a></li>
           <li><a href="#impressum">Impressum</a></li>
           <li><a href="#datenschutz">Datenschutz</a></li>
+          <li><a href="#" onclick="openCookieSettings(); return false;">Cookie-Einstellungen</a></li>
         </ul>
       </div>
     </div>
@@ -581,6 +610,41 @@
     </div>
   </div>
 </footer>
+
+<div class="cookie-banner" id="cookie-banner" style="display:none">
+  <div class="cookie-banner-inner">
+    <h3>Wir benötigen Ihre Zustimmung</h3>
+    <p>Wir verwenden auf dieser Seite technisch notwendige Cookies sowie eingebettete Vergleichsrechner unseres Partners financeAds. Beim Laden eines Rechners wird eine Verbindung zu dessen Servern hergestellt und Ihre IP-Adresse übertragen. Sie können Ihre Einwilligung jederzeit mit Wirkung für die Zukunft in den Cookie-Einstellungen widerrufen oder anpassen. Details finden Sie in unserer <a href="#datenschutz">Datenschutzerklärung</a> und im <a href="#impressum">Impressum</a>.</p>
+    <div class="cookie-banner-actions">
+      <button class="btn btn-primary" onclick="acceptAllCookies()">Alle akzeptieren</button>
+      <button class="btn btn-outline" onclick="rejectOptionalCookies()">Nur essenziell</button>
+      <button class="btn btn-outline" onclick="openCookieSettings()">Einstellungen</button>
+    </div>
+  </div>
+</div>
+
+<div class="cookie-settings-overlay" id="cookie-settings">
+  <div class="cookie-settings-box">
+    <h3>Cookie-Einstellungen</h3>
+    <div class="cookie-cat">
+      <div class="cookie-cat-head"><strong>Essenziell</strong><span class="always-on">Immer aktiv</span></div>
+      <p>Technisch notwendig für den Betrieb der Website, z. B. zur Speicherung Ihrer Cookie-Präferenz. Kann nicht deaktiviert werden.</p>
+    </div>
+    <div class="cookie-cat">
+      <div class="cookie-cat-head">
+        <strong>Externe Inhalte (Vergleichsrechner)</strong>
+        <label class="cookie-switch"><input type="checkbox" id="cookie-external-toggle"><span class="slider"></span></label>
+      </div>
+      <p>Zum Anzeigen unserer eingebetteten financeAds-Vergleichsrechner (Bankkonto, Versicherungen, Kredite, Geldanlage) wird eine Verbindung zu den Servern von financeAds hergestellt und dabei Ihre IP-Adresse übertragen.</p>
+    </div>
+    <div class="cookie-settings-actions">
+      <button class="btn btn-outline" onclick="closeCookieSettings()">Abbrechen</button>
+      <button class="btn btn-primary" onclick="saveCookieSettings()">Auswahl speichern</button>
+    </div>
+  </div>
+</div>
+
+<button class="cookie-icon-btn" id="cookie-icon" onclick="openCookieSettings()" title="Cookie-Einstellungen" aria-label="Cookie-Einstellungen">🍪</button>
 
 <script>
 /*
@@ -713,12 +777,52 @@ function toggleRechner(id) {
   if (isOpen) {
     wrap.style.display = 'none';
     btn.textContent = 'Anzeigen';
-  } else {
-    wrap.style.display = 'block';
-    btn.textContent = 'Verbergen';
-    const iframe = wrap.querySelector('iframe');
-    if (!iframe.src) iframe.src = iframe.dataset.src;
+    return;
   }
+  const consent = getCookieConsent();
+  if (!consent || !consent.external) {
+    openCookieSettings();
+    return;
+  }
+  wrap.style.display = 'block';
+  btn.textContent = 'Verbergen';
+  const iframe = wrap.querySelector('iframe');
+  if (!iframe.src) iframe.src = iframe.dataset.src;
+}
+
+/* COOKIE CONSENT */
+const COOKIE_CONSENT_KEY = 'tariffuchs_cookie_consent';
+
+function getCookieConsent() {
+  try { return JSON.parse(localStorage.getItem(COOKIE_CONSENT_KEY)); } catch (e) { return null; }
+}
+
+function setCookieConsent(external) {
+  try { localStorage.setItem(COOKIE_CONSENT_KEY, JSON.stringify({ essential: true, external: external, ts: Date.now() })); } catch (e) {}
+}
+
+function refreshCookieUI() {
+  const consent = getCookieConsent();
+  document.getElementById('cookie-banner').style.display = consent ? 'none' : 'block';
+  document.getElementById('cookie-icon').style.display = consent ? 'flex' : 'none';
+  document.getElementById('cookie-external-toggle').checked = consent ? !!consent.external : false;
+}
+
+function acceptAllCookies() { setCookieConsent(true); refreshCookieUI(); }
+function rejectOptionalCookies() { setCookieConsent(false); refreshCookieUI(); }
+
+function openCookieSettings() {
+  const consent = getCookieConsent();
+  document.getElementById('cookie-external-toggle').checked = consent ? !!consent.external : false;
+  document.getElementById('cookie-settings').style.display = 'flex';
+}
+function closeCookieSettings() {
+  document.getElementById('cookie-settings').style.display = 'none';
+}
+function saveCookieSettings() {
+  setCookieConsent(document.getElementById('cookie-external-toggle').checked);
+  closeCookieSettings();
+  refreshCookieUI();
 }
 
 function renderArtikel() {
@@ -765,6 +869,7 @@ document.getElementById('newsletter-form').addEventListener('submit', (e) => {
 renderProviders();
 renderIframes();
 renderArtikel();
+refreshCookieUI();
 </script>
 </body>
 </html>
